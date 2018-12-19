@@ -1,2 +1,2 @@
-# library-app
+# Library App
 Library App using Laravel
