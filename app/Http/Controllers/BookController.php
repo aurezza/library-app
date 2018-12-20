@@ -25,9 +25,11 @@ class BookController extends Controller
         return response()->json($book, 201);
     }   
 
-    public function update(Request $request, $id, $name, $numberOfPages) {
+    public function update(Request $request, $id) {
         // change to get request
         $book = Book::findOrFail($id);
+        $name = $request->name;
+        $numberOfPages = $request->number_of_pages;
         // get name and number of pages, edit
         $book->update([
             'name'=> $name, 
@@ -48,8 +50,8 @@ class BookController extends Controller
 
     public function borrow(Request $request, $bookId) {
         $book = Book::findOrFail($bookId);
-        $userId = $request->id;
-        $user = User::findOrFail($userId);
+        $student_number = $request->student_number;
+        $user = User::where('student_number', $student_number)->firstOrFail();
         $userName = $user->name;
         $book->update([
             'borrowed_by'=> $userName,
@@ -60,9 +62,13 @@ class BookController extends Controller
         return response()->json($book, 200);
     }
 
-    public function returnBook(Request $request, $id) {
-        $book = Book::findOrFail($id);
+    public function returnBook(Request $request, $bookId) {
+        $book = Book::findOrFail($bookId);
+        $student_number = $request->student_number;
+        $user = User::where('student_number', $student_number)->firstOrFail();
         $book->update([
+            'borrowed_by'=> null,
+            'borrowed_at'=> null,
             'returned_at'=> Carbon::now()
         ]);
 

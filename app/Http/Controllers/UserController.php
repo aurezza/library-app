@@ -23,9 +23,11 @@ class UserController extends Controller
         return response()->json($user, 201);
     }   
 
-    public function update(Request $request, $id, $name, $studentNumber) {
+    public function update(Request $request, $id) {
         // change to get request
         $user = User::findOrFail($id);
+        $name = $request->name;
+        $studentNumber = $request->student_number;
         $user->update([
             'name'=> $name, 
             'student_number'=> $studentNumber
