@@ -13,10 +13,15 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table)
-		{
-			$table->softDeletes();
-		});
+        Schema::create('books', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('number_of_pages');
+            $table->string('borrowed_by')->nullable();
+            $table->datetime('borrowed_at')->nullable();
+            $table->datetime('returned_at')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,9 +31,9 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-      Schema::table('users', function(Blueprint $table)
+      Schema::table('books', function(Blueprint $table)
 		{
-            $table->dropSoftDeletes();
+            Schema::dropIfExists('books');
 		});
     }
 }
