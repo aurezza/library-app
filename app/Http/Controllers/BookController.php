@@ -6,6 +6,7 @@ use App\Book;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+// use Illuminate\Database\Eloquent\Collection::getAttribute;
 
 class BookController extends Controller
 {
@@ -45,10 +46,11 @@ class BookController extends Controller
         return response()->json(null, 204);
     }
 
-    public function borrow(Request $request, $bookId, $userId) {
+    public function borrow(Request $request, $bookId) {
         $book = Book::findOrFail($bookId);
+        $userId = $request->id;
         $user = User::findOrFail($userId);
-        $userName = $user->getAttribute('name');
+        $userName = $user->name;
         $book->update([
             'borrowed_by'=> $userName,
             'borrowed_at'=> Carbon::now()
