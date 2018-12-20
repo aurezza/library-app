@@ -28,7 +28,7 @@ class BookController extends Controller
     public function update(Request $request, $id) {
         // change to get request
         $book = Book::findOrFail($id);
-        $name = $request->name;
+        $anme = $request->name;
         $numberOfPages = $request->number_of_pages;
         // get name and number of pages, edit
         $book->update([
@@ -45,7 +45,7 @@ class BookController extends Controller
         $book->delete();
 
         // status no content
-        return response()->json(null, 204);
+        return response()->json($book, 204);
     }
 
     public function borrow(Request $request, $bookId) {
