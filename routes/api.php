@@ -25,7 +25,7 @@ Route::get('books/{id}', 'BookController@show');
 Route::post('books', 'BookController@store');
 Route::put('books/{id}/{name}/{numberOfPages}', 'BookController@update');
 Route::delete('books/{id}', 'BookController@delete');
-Route::post('books/borrow/{bookId}/{userId}', 'BookController@borrow');
+Route::post('books/borrow/{bookId}', 'BookController@borrow');
 Route::post('books/returnBook/{id}', 'BookController@returnBook');
 
 // User routes

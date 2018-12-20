@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $request = Request::create('/api/books/', 'GET');
+
+    $response = Route::dispatch($request);
+    $body = $response->getOriginalContent();
+    $books = json_decode($body);
+
+    return view('home', compact('books'));
 });
+
