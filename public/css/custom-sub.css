@@ -1,0 +1,23 @@
+div#wrapper {
+    background-color: #f1f1f1;
+}
+
+div#sidebar-wrapper {
+    width: 28%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.content {
+    width: 70%;
+    display: inline-block;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
