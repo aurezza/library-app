@@ -16,11 +16,7 @@
         <div id="wrapper">
          <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    Add New User
-                </li>
-            </ul>
+             <h4>Add New User</h4>
              <form action="/students/add" method="post" accept-charset="UTF-8" class="form">
                 {{ csrf_field() }}
                 <label for="name">Student name:</label>
@@ -36,7 +32,7 @@
                     A Simple Library App - List of Students
                 </div>
 
-                <ul class="user-list">
+                <ul class="item-list">
                 @foreach ($users as $user)
                     <li>
                         <img src="https://placeimg.com/150/200/people/grayscale" height="150" width="200"><br>
