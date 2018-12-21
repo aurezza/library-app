@@ -9,7 +9,7 @@ body {
 }
 
 .full-height {
-  height: 100vh;
+  height: 90vh;
 }
 
 .flex-center {
@@ -28,13 +28,6 @@ body {
 
 .title {
   font-size: 84px;
-}
-
-.links,
-.title {
-  clear: both;
-  display: block;
-  width: 100%;
 }
 
 .links > a {
